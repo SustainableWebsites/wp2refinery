@@ -34,16 +34,16 @@ xml.search('//wp:category').each do |category|
 end
 
 # Users
-xml.search('//dc:creator').each do |user|
-  unless users.include?(user.inner_text)
-    users << user.inner_text
-
-    # Save users
-    if db
-      db.query("INSERT INTO users (username, created_at, updated_at) VALUES ('#{users.last}', '#{Time.now}', '#{Time.now}')")
-    end
-  end
-end
+# xml.search('//dc:creator').each do |user|
+#   unless users.include?(user.inner_text)
+#     users << user.inner_text
+# 
+#     # Save users
+#     if db
+#       db.query("INSERT INTO users (username, created_at, updated_at) VALUES ('#{users.last}', '#{Time.now}', '#{Time.now}')")
+#     end
+#   end
+# end
 
 # Post
 xml.search("//item").each do |item|
@@ -120,7 +120,7 @@ xml.search("//item").each do |item|
     if db    
       unless post[:wp_status] == "auto-draft"    
         # Get inserted user id
-        user_id = db.query("SELECT id FROM users WHERE username = '#{post[:creator]}'")
+        user_id = 1
 
         # Convert draft status
         draft = 0
