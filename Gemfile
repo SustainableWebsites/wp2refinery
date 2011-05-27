@@ -15,3 +15,4 @@ end
 gem 'hpricot'
 gem 'trollop'
 gem 'mysql2'
+gem 'rake', '0.8.7'
